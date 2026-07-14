@@ -95,7 +95,11 @@ export function checkBulkCsv(text) {
     ...findings.map((finding) => `${finding.severity.toUpperCase()}: ${finding.code}${finding.row ? ` at row ${finding.row}` : ''}`),
     errorCount
       ? 'Next step: fix the data-side errors, export again, then test with the three-row batch.'
-      : 'Next step: test the three-row batch. If Canva still fails, the problem is likely mapping, design state, or a platform issue rather than basic CSV structure.',
+      : [
+          'Next step: test the three-row batch in the same current design.',
+          'Before Generate, confirm the side panel connected field count is complete, at least one row is selected, and each field is mapped to the intended element.',
+          'If that tiny batch still fails, focus on Canva mapping, design state, or a platform issue rather than basic CSV structure.',
+        ].join(' '),
   ].join('\n');
 
   return {

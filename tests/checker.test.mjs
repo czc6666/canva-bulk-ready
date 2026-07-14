@@ -71,3 +71,14 @@ test('quoted commas, quotes, and line breaks stay valid in the three-row test ba
 test('an unclosed quoted field is rejected', () => {
   assert.throws(() => checkBulkCsv('Headline,Caption\n"broken,caption'), /Unclosed quoted field/);
 });
+
+test('the no-content receipt gives Canva-side mapping checks after a structurally ready CSV', () => {
+  const result = checkBulkCsv('Monday,Tuesday\nJuly 1,July 2\nJuly 8,July 9');
+
+  assert.equal(result.verdict, 'ready');
+  assert.match(result.receipt, /connected field count/i);
+  assert.match(result.receipt, /at least one row is selected/i);
+  assert.match(result.receipt, /same current design/i);
+  assert.ok(!result.receipt.includes('Monday'));
+  assert.ok(!result.receipt.includes('July 1'));
+});
