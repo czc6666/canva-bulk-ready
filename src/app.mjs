@@ -115,9 +115,21 @@ batchButton.addEventListener('click', () => {
 
 copyButton.addEventListener('click', async () => {
   if (!latest) return;
-  await navigator.clipboard.writeText(latest.receipt);
-  copyButton.textContent = 'Copied';
-  telemetry.track('receipt_copied');
+  try {
+    await navigator.clipboard.writeText(latest.receipt);
+    copyButton.textContent = 'Copied';
+    telemetry.track('receipt_copied');
+  } catch {
+    const blob = new Blob([latest.receipt], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement('a');
+    anchor.href = url;
+    anchor.download = 'canva-bulk-create-checkup.txt';
+    anchor.click();
+    URL.revokeObjectURL(url);
+    copyButton.textContent = 'Downloaded receipt';
+    telemetry.track('receipt_copied');
+  }
 });
 
 feedback.addEventListener('click', () => telemetry.track('feedback_clicked'));
