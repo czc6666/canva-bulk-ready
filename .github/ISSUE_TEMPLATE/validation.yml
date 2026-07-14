@@ -1,0 +1,35 @@
+name: Real Canva Bulk Create result
+description: Tell us whether the checkup isolated your problem. Please do not post private CSV content.
+title: "[Real result] "
+labels: ["validation"]
+body:
+  - type: dropdown
+    id: outcome
+    attributes:
+      label: What happened?
+      options:
+        - The check found a data-side issue I could fix
+        - The CSV passed and the three-row batch worked in Canva
+        - The CSV passed but the three-row batch still failed in Canva
+        - The tool itself failed on my CSV
+    validations:
+      required: true
+  - type: textarea
+    id: useful
+    attributes:
+      label: What did this change in your next step?
+      description: Do not paste client data, filenames, private links, or full CSV rows.
+    validations:
+      required: true
+  - type: textarea
+    id: sanitized
+    attributes:
+      label: Optional sanitized evidence
+      description: You may paste the no-content receipt or a made-up example that reproduces the issue.
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy check
+      options:
+        - label: I removed private, client, or identifying information.
+          required: true

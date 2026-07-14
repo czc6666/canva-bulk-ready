@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Canva Bulk Ready — CSV check and 3-row test batch</title>
+  <meta name="description" content="Check a Canva Bulk Create CSV locally, catch basic data-side risks, and export a three-row test batch before a large run.">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self' https://api.counterapi.dev; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action https://github.com">
+  <link rel="canonical" href="https://czc6666.github.io/canva-bulk-ready/">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./src/app.mjs"></script>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <a class="brand" href="./">Canva Bulk Ready</a>
+      <nav aria-label="Main navigation">
+        <a href="#how">How it works</a>
+        <a href="#privacy">Privacy</a>
+        <a href="https://github.com/czc6666/canva-bulk-ready" rel="noreferrer">Source</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow">Canva Bulk Create CSV checkup</div>
+          <h1>Stop guessing whether the CSV is the problem.</h1>
+          <p>Check basic data-side risks locally, then export a three-row test batch. If that tiny batch still fails in the same Canva design, you have a cleaner signal to inspect mapping, design state, limits, or a Canva outage.</p>
+          <div class="promise">
+            <span>Runs in your browser</span>
+            <span>No cell values sent</span>
+            <span>No Canva login</span>
+            <span>Under a minute</span>
+          </div>
+        </div>
+        <aside class="card mini-card" aria-label="Example check result">
+          <strong>Bulk Create isolation card</strong>
+          <div class="fake-row"><span></span><span></span><span></span></div>
+          <div class="fake-row"><span></span><span></span><span></span></div>
+          <div class="mini-result">● CSV structure clear → test 3 rows in Canva</div>
+        </aside>
+      </section>
+
+      <section class="card tool" aria-label="CSV checkup tool">
+        <div id="drop-zone" class="drop-zone">
+          <input id="csv-file" type="file" accept=".csv,text/csv">
+          <p><strong>Drop your CSV here</strong><br>or choose it from this device.</p>
+          <label class="button" for="csv-file">Choose CSV</label>
+          <button id="load-sample" class="button secondary small" type="button">Try a safe sample</button>
+          <p class="file-note">Validation build limit: 10 MB. The file stays in this browser.</p>
+        </div>
+        <div id="result" class="result" hidden>
+          <div id="verdict" class="verdict"></div>
+          <div id="summary"></div>
+          <ul id="findings"></ul>
+          <div id="next-step" class="next"></div>
+          <div class="actions">
+            <button id="download-batch" class="button" type="button">Download 3-row test CSV</button>
+            <button id="copy-receipt" class="button secondary" type="button">Copy no-content receipt</button>
+          </div>
+        </div>
+        <p id="status" class="empty-state">No file selected. Nothing has been checked or sent.</p>
+      </section>
+
+      <section id="how" class="section">
+        <div class="eyebrow">One question, one small test</div>
+        <h2>Data problem or Canva-side problem?</h2>
+        <div class="steps">
+          <article class="card step"><b>01</b><h3>Check</h3><p>Catch blank or duplicate headers, uneven rows, empty columns, duplicate rows, and malformed quoted fields.</p></article>
+          <article class="card step"><b>02</b><h3>Shrink</h3><p>Export the same headers with only the first three data rows. This reduces the next test without exposing your content to us.</p></article>
+          <article class="card step"><b>03</b><h3>Isolate</h3><p>If the three-row batch fails too, inspect Canva mapping, design state, batch limits, or platform health instead of endlessly cleaning the spreadsheet.</p></article>
+        </div>
+      </section>
+
+      <section id="privacy" class="section boundary">
+        <article class="card">
+          <div class="eyebrow">What leaves</div>
+          <h2>Fixed counters only</h2>
+          <ul><li>Page opened</li><li>Sample or local file selected</li><li>Check succeeded or failed</li><li>Test batch downloaded</li><li>Receipt copied or feedback clicked</li></ul>
+        </article>
+        <article class="card">
+          <div class="eyebrow">What never leaves</div>
+          <h2>Your working data</h2>
+          <ul><li>Filename or local path</li><li>Column names or cell values</li><li>Row-level details</li><li>Downloaded test batch</li><li>Generated receipt text</li></ul>
+          <p>CounterAPI may still see normal network metadata such as IP address and User-Agent. Measurement failure never blocks the local check.</p>
+        </article>
+      </section>
+
+      <section class="section card feedback-card">
+        <div class="eyebrow">Real-user validation</div>
+        <h2>Did it isolate the failure?</h2>
+        <p>A useful result is not “the page loaded.” It is that a real Canva user ran a real CSV, learned which side to investigate, shared a sanitized example, or asked for continued help.</p>
+        <a id="feedback-link" class="button" href="https://github.com/czc6666/canva-bulk-ready/issues/new?template=validation.yml" rel="noreferrer">Share the result on GitHub</a>
+      </section>
+    </main>
+
+    <footer>
+      <span>Independent tool. Not affiliated with Canva.</span>
+      <span>Open source · browser-local CSV handling</span>
+    </footer>
+  </div>
+</body>
+</html>
