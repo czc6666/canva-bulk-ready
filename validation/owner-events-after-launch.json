@@ -1,0 +1,13 @@
+{
+  "events": {
+    "page_view": 0,
+    "sample_loaded": 0,
+    "file_selected": 0,
+    "check_succeeded": 0,
+    "check_failed": 0,
+    "test_batch_downloaded": 0,
+    "receipt_copied": 0,
+    "feedback_clicked": 0
+  },
+  "note": "Increment only when owner intentionally triggers a production event after baseline."
+}

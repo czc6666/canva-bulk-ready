@@ -1,0 +1,15 @@
+{
+  "captured_at_utc": "2026-07-14T14:52:42.437996+00:00",
+  "namespace": "canva-bulk-ready-prod-v1",
+  "counters": {
+    "page_view": 5,
+    "sample_loaded": 2,
+    "file_selected": 0,
+    "check_succeeded": 2,
+    "check_failed": 0,
+    "test_batch_downloaded": 1,
+    "receipt_copied": 0,
+    "feedback_clicked": 0
+  },
+  "note": "Baseline captured immediately after the first authorized Reddit distribution comment; cannot attribute any pre-baseline counters to external users."
+}
